@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sign In | XARA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:#fff;color:#1a1a1a;font-size:14px}
 a{text-decoration:none;color:inherit}
-img{display:block;width:100%}
-
-/* Nav */
 .nav{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;border-bottom:1px solid #e8e8e8;position:sticky;top:0;background:#fff;z-index:100}
 .nav-logo{font-size:22px;font-weight:700;letter-spacing:4px}
 .nav-links{display:flex;gap:32px;font-size:13px;letter-spacing:1px}
@@ -17,85 +16,92 @@ img{display:block;width:100%}
 .nav-right{display:flex;gap:20px;font-size:13px;letter-spacing:1px}
 .nav-right a{text-transform:uppercase}
 .nav-right a:hover{text-decoration:underline}
-
-/* Hero */
-.hero{position:relative;background:#f5f5f5;overflow:hidden}
+.banner-strip{background:#1a1a1a;color:#fff;text-align:center;padding:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.hero{position:relative;overflow:hidden}
+.hero-img{width:100%;height:600px;background:linear-gradient(135deg,#1a1a1a 0%,#3a3a3a 100%);display:flex;align-items:center;justify-content:center;color:#fff}
 .hero-content{position:absolute;bottom:60px;left:60px}
 .hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;color:#fff}
 .hero-title{font-size:52px;font-weight:300;line-height:1.1;color:#fff;margin-bottom:24px;letter-spacing:-1px}
 .hero-cta{display:inline-block;background:#fff;color:#1a1a1a;padding:14px 32px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500}
-.hero-cta:hover{background:#1a1a1a;color:#fff}
-.hero-img{width:100%;height:600px;object-fit:cover;background:#d4d4d4;display:flex;align-items:center;justify-content:center;font-size:80px}
-
-/* Product grid */
+.hero-cta:hover{background:#e8e8e8}
 .section{padding:60px 40px}
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
 .section-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
 .section-link{font-size:12px;letter-spacing:1px;text-decoration:underline;text-transform:uppercase}
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.product-card{cursor:pointer}
-.product-card:hover .product-img{opacity:0.9}
+.product-card a{display:block}
 .product-img{background:#f0f0f0;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:64px;margin-bottom:12px;overflow:hidden;transition:opacity 0.2s}
+.product-card:hover .product-img{opacity:0.85}
 .product-name{font-size:13px;color:#1a1a1a;margin-bottom:4px;letter-spacing:0.5px}
 .product-price{font-size:13px;color:#555}
-.product-badge{display:inline-block;background:#1a1a1a;color:#fff;font-size:10px;letter-spacing:2px;padding:3px 8px;margin-bottom:8px;text-transform:uppercase}
-.product-badge.sale{background:#c00}
-
-/* Product detail */
+.badge{display:inline-block;background:#1a1a1a;color:#fff;font-size:10px;letter-spacing:2px;padding:3px 8px;margin-bottom:8px;text-transform:uppercase}
+.badge-sale{background:#c00}
+.two-col-hero{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.col-hero{height:400px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative}
+.col-hero-text{position:absolute;bottom:32px;left:32px}
+.col-hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.col-hero-btn{display:inline-block;padding:12px 24px;background:#1a1a1a;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.col-hero-btn:hover{background:#333}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:60px 40px;text-align:center;border-top:1px solid #e8e8e8}
+.info-item h3{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.info-item p{font-size:13px;color:#666;line-height:1.7}
+.cat-hero{background:#f0ede8;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.cat-hero-text h1{font-size:42px;font-weight:300;letter-spacing:-1px;margin-bottom:16px}
+.cat-hero-text p{font-size:14px;color:#666;line-height:1.7;margin-bottom:28px}
+.cat-hero-img{background:#ddd;height:400px;display:flex;align-items:center;justify-content:center;font-size:80px}
+.tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid #e8e8e8;margin-right:8px;margin-bottom:8px;cursor:pointer}
+.tag:hover,.tag.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.breadcrumb{padding:16px 40px;font-size:12px;color:#888}
+.breadcrumb a{color:#888}
+.breadcrumb a:hover{color:#1a1a1a}
+.breadcrumb span{margin:0 8px}
 .product-detail{display:grid;grid-template-columns:1fr 420px;min-height:calc(100vh - 64px)}
 .product-gallery{background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:120px;min-height:600px}
 .product-info{padding:60px 48px}
 .product-info h1{font-size:20px;font-weight:400;letter-spacing:1px;margin-bottom:8px}
-.product-info .price{font-size:16px;color:#555;margin-bottom:32px}
-.color-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.product-price{font-size:16px;color:#555;margin-bottom:32px}
+.color-label,.size-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.size-label{display:flex;justify-content:space-between}
 .colors{display:flex;gap:8px;margin-bottom:28px}
 .color-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
 .color-swatch.selected{border-color:#1a1a1a}
-.size-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;justify-content:space-between}
 .sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
 .size-btn{border:1px solid #e8e8e8;padding:12px;text-align:center;font-size:13px;cursor:pointer;background:#fff}
 .size-btn:hover{border-color:#1a1a1a}
 .size-btn.selected{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
 .size-btn.sold-out{color:#ccc;cursor:not-allowed}
-.add-btn{width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-bottom:12px}
+.add-btn{display:block;width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;text-align:center;margin-bottom:12px}
 .add-btn:hover{background:#333}
 .wishlist-btn{width:100%;padding:18px;background:#fff;color:#1a1a1a;border:1px solid #1a1a1a;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
 .product-desc{margin-top:32px;font-size:13px;line-height:1.7;color:#555;border-top:1px solid #e8e8e8;padding-top:24px}
-
-/* Cart */
-.cart-layout{display:grid;grid-template-columns:1fr 380px;gap:60px;padding:60px 40px;min-height:calc(100vh - 64px)}
+.cart-layout{display:grid;grid-template-columns:1fr 380px;gap:60px;padding:60px 40px}
 .cart-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px}
 .cart-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #e8e8e8}
 .cart-item-img{width:100px;height:130px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0}
-.cart-item-details{flex:1}
-.cart-item-name{font-size:13px;margin-bottom:4px;letter-spacing:0.5px}
+.cart-item-name{font-size:13px;margin-bottom:4px}
 .cart-item-meta{font-size:12px;color:#888;margin-bottom:8px}
 .cart-item-price{font-size:13px}
-.cart-summary{padding-top:60px}
+.cart-summary-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
 .cart-summary-row{display:flex;justify-content:space-between;font-size:13px;padding:12px 0;border-bottom:1px solid #e8e8e8}
 .cart-total{display:flex;justify-content:space-between;font-size:14px;font-weight:500;padding:20px 0}
 .checkout-btn{display:block;width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;text-align:center;margin-top:16px}
 .checkout-btn:hover{background:#333}
-.promo-input{display:flex;gap:0;margin-top:16px}
-.promo-input input{flex:1;border:1px solid #e8e8e8;padding:14px 16px;font-size:13px;border-right:none}
-.promo-input button{border:1px solid #e8e8e8;padding:14px 20px;background:#fff;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
-
-/* Forms */
+.promo-row{display:flex;gap:0;margin-top:16px}
+.promo-row input{flex:1;border:1px solid #e8e8e8;padding:14px 16px;font-size:13px;border-right:none}
+.promo-row button{border:1px solid #e8e8e8;padding:14px 20px;background:#fff;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
 .form-page{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 64px);background:#fafafa}
 .form-card{background:#fff;padding:48px;width:100%;max-width:480px}
 .form-card h1{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
 .form-card p{font-size:13px;color:#888;margin-bottom:32px;line-height:1.6}
 .form-group{margin-bottom:20px}
 .form-group label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;color:#555}
-.form-group input,.form-group select{width:100%;border:1px solid #e8e8e8;padding:14px 16px;font-size:13px;background:#fff}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid #e8e8e8;padding:14px 16px;font-size:13px;background:#fff;font-family:inherit}
 .form-group input:focus,.form-group select:focus{outline:none;border-color:#1a1a1a}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .submit-btn{width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-top:8px}
 .submit-btn:hover{background:#333}
 .form-link{text-align:center;margin-top:20px;font-size:13px;color:#888}
 .form-link a{color:#1a1a1a;text-decoration:underline}
-
-/* Checkout */
 .checkout-layout{display:grid;grid-template-columns:1fr 400px;min-height:calc(100vh - 64px)}
 .checkout-form{padding:60px 40px}
 .checkout-summary{background:#fafafa;padding:60px 40px;border-left:1px solid #e8e8e8}
@@ -103,17 +109,10 @@ img{display:block;width:100%}
 .checkout-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}
 .checkout-item{display:flex;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #e8e8e8}
 .checkout-item-img{width:64px;height:80px;background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-
-/* Confirmation */
 .confirmation{text-align:center;padding:100px 40px;max-width:600px;margin:0 auto}
-.confirmation-icon{font-size:48px;margin-bottom:24px}
 .confirmation h1{font-size:13px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px}
-.confirmation p{font-size:13px;color:#888;line-height:1.7;margin-bottom:8px}
-.confirmation-number{font-size:13px;font-weight:500;margin:24px 0 8px}
 .continue-btn{display:inline-block;margin-top:40px;padding:16px 40px;background:#1a1a1a;color:#fff;font-size:12px;letter-spacing:3px;text-transform:uppercase}
 .continue-btn:hover{background:#333}
-
-/* Account */
 .account-layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 64px)}
 .account-sidebar{border-right:1px solid #e8e8e8;padding:48px 32px}
 .account-sidebar h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
@@ -123,120 +122,68 @@ img{display:block;width:100%}
 .account-content h1{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}
 .order-card{border:1px solid #e8e8e8;padding:24px;margin-bottom:16px}
 .order-header{display:flex;justify-content:space-between;margin-bottom:16px;font-size:13px}
-.order-status{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#666}
-
-/* Upgrade banner */
-.upgrade-banner{background:#f5f5f5;padding:16px 40px;text-align:center;font-size:12px;letter-spacing:1px;border-bottom:1px solid #e8e8e8}
-.upgrade-banner a{text-decoration:underline}
-
-/* Footer */
 .footer{background:#1a1a1a;color:#aaa;padding:60px 40px;margin-top:80px}
 .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
 .footer h4{color:#fff;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
 .footer a{display:block;font-size:12px;color:#aaa;margin-bottom:10px}
 .footer a:hover{color:#fff}
 .footer-bottom{border-top:1px solid #333;margin-top:40px;padding-top:24px;font-size:12px;display:flex;justify-content:space-between}
-
-/* Banner strip */
-.banner-strip{background:#1a1a1a;color:#fff;text-align:center;padding:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
-
-/* Category hero */
-.cat-hero{background:#f0ede8;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.cat-hero-text h1{font-size:42px;font-weight:300;letter-spacing:-1px;margin-bottom:16px}
-.cat-hero-text p{font-size:14px;color:#666;line-height:1.7;margin-bottom:28px}
-.cat-hero-img{background:#ddd;height:400px;display:flex;align-items:center;justify-content:center;font-size:80px}
-
-/* Misc */
-.breadcrumb{padding:16px 40px;font-size:12px;color:#888;letter-spacing:0.5px}
-.breadcrumb a{color:#888}
-.breadcrumb span{margin:0 8px}
-.tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid #e8e8e8;margin-right:8px;margin-bottom:8px;cursor:pointer}
-.tag:hover,.tag.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:60px 40px;text-align:center}
-.info-item h3{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
-.info-item p{font-size:13px;color:#666;line-height:1.7}
-</style></head>
+</style>
+</head>
 <body>
-<div class="banner-strip">Free shipping on orders over $50 · Free returns · <a href="/sale" style="color:#fff;text-decoration:underline">Sale now on</a></div>
+<div class="banner-strip">Free shipping on orders over $50 &middot; Free returns &middot; <a href="/xara-site/sale" style="color:#fff;text-decoration:underline">Sale now on</a></div>
 <nav class="nav">
   <div class="nav-links">
-    <a href="/woman">Woman</a>
-    <a href="/man">Man</a>
-    <a href="/new">New In</a>
-    <a href="/sale">Sale</a>
+    <a href="/xara-site/woman">Woman</a>
+    <a href="/xara-site/man">Man</a>
+    <a href="/xara-site/new">New In</a>
+    <a href="/xara-site/sale">Sale</a>
   </div>
-  <a href="/" class="nav-logo">XARA</a>
+  <a href="/xara-site/" class="nav-logo">XARA</a>
   <div class="nav-right">
-    <a href="/stores">Stores</a>
-    <a href="/account">Account</a>
-    <a href="/cart">Cart (2)</a>
+    <a href="/xara-site/stores">Stores</a>
+    <a href="/xara-site/account">Account</a>
+    <a href="/xara-site/cart">Cart (2)</a>
   </div>
 </nav>
+
 <div class="form-page">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:100%;max-width:900px">
     <div class="form-card" style="border-right:1px solid #e8e8e8">
       <h1>Sign in</h1>
-      <p>Sign in to your Xara account to view your orders, manage returns, and access your wishlist.</p>
-      <form onsubmit="window.location='/account/orders';return false;">
+      <p>Sign in to view your orders, manage returns, and access your wishlist.</p>
+      <form onsubmit="window.location='/xara-site/account/orders';return false;">
         <div class="form-group"><label>Email address</label><input type="email" placeholder="jane@email.com" required></div>
         <div class="form-group"><label>Password</label><input type="password" placeholder="Your password" required></div>
         <button type="submit" class="submit-btn">Sign in</button>
       </form>
-      <div style="text-align:center;margin-top:16px;font-size:12px">
-        <a href="#" style="color:#888;text-decoration:underline">Forgot your password?</a>
-      </div>
+      <div style="text-align:center;margin-top:16px;font-size:12px"><a href="#" style="color:#888;text-decoration:underline">Forgot your password?</a></div>
     </div>
     <div class="form-card">
       <h1>New customer</h1>
-      <p>Create an account to enjoy faster checkout, easy order tracking, and access to your wishlist across all devices.</p>
-      <a href="/account/register" class="submit-btn" style="display:block;text-align:center;margin-top:16px">Create account</a>
-      <div style="margin-top:24px;font-size:12px;color:#888;line-height:1.7">
-        <div style="margin-bottom:8px">✓ Save your address for faster checkout</div>
-        <div style="margin-bottom:8px">✓ Track orders in real time</div>
-        <div>✓ Access your wishlist anywhere</div>
+      <p>Create an account to enjoy faster checkout, easy order tracking, and access to your wishlist.</p>
+      <a href="/xara-site/account/register" class="submit-btn" style="display:block;text-align:center;margin-top:16px">Create account</a>
+      <div style="margin-top:24px;font-size:12px;color:#888;line-height:1.9">
+        <div>&#10003; Save your address for faster checkout</div>
+        <div>&#10003; Track orders in real time</div>
+        <div>&#10003; Access your wishlist anywhere</div>
       </div>
     </div>
   </div>
 </div>
+
 <footer class="footer">
   <div class="footer-grid">
-    <div>
-      <h4>Help</h4>
-      <a href="#">FAQ</a>
-      <a href="#">Shipping & Returns</a>
-      <a href="#">Size Guide</a>
-      <a href="/stores">Store Locator</a>
-      <a href="/gift-cards">Gift Cards</a>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <a href="/sustainability">Sustainability</a>
-      <a href="#">About Xara</a>
-      <a href="#">Careers</a>
-      <a href="#">Press</a>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Cookie Policy</a>
-      <a href="#">Terms of Use</a>
-    </div>
-    <div>
-      <h4>Follow Us</h4>
-      <a href="#">Instagram</a>
-      <a href="#">Pinterest</a>
-      <a href="#">TikTok</a>
-      <a href="#">YouTube</a>
-    </div>
+    <div><h4>Help</h4><a href="#">FAQ</a><a href="#">Shipping &amp; Returns</a><a href="#">Size Guide</a><a href="/xara-site/stores">Store Locator</a><a href="/xara-site/gift-cards">Gift Cards</a></div>
+    <div><h4>Company</h4><a href="/xara-site/sustainability">Sustainability</a><a href="#">About Xara</a><a href="#">Careers</a></div>
+    <div><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a></div>
+    <div><h4>Follow Us</h4><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a><a href="#">YouTube</a></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 XARA</span>
-    <span>USD $ · English</span>
-  </div>
+  <div class="footer-bottom"><span>&copy; 2026 XARA</span><span>USD $ &middot; English</span></div>
 </footer>
 <script>
 (function(){
-var KEY="lc_snip_6d013ade567640baadca2c4433178080";
+var KEY="lc_snip_37b0245fbce040ccb5a139dcf9067d3f";
 var EP="https://nyrdvltmzswxphvgxdeh.supabase.co/functions/v1/ingest";
 var q=[];
 var sid=(function(){try{var i=sessionStorage.getItem("lc_sid");if(!i){i=Math.random().toString(36).slice(2)+Date.now();sessionStorage.setItem("lc_sid",i);}return i;}catch(e){return Math.random().toString(36).slice(2)+Date.now();}})();
@@ -251,4 +198,5 @@ document.addEventListener("visibilitychange",function(){if(document.visibilitySt
 setInterval(flush,3000);
 })();
 </script>
-</body></html>
+</body>
+</html>
