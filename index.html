@@ -1,143 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>XARA | New Collection</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:#fff;color:#1a1a1a;font-size:14px}
+a{text-decoration:none;color:inherit}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;border-bottom:1px solid #e8e8e8;position:sticky;top:0;background:#fff;z-index:100}
+.nav-logo{font-size:22px;font-weight:700;letter-spacing:4px}
+.nav-links{display:flex;gap:32px;font-size:13px;letter-spacing:1px}
+.nav-links a{color:#1a1a1a;text-transform:uppercase}
+.nav-links a:hover{text-decoration:underline}
+.nav-right{display:flex;gap:20px;font-size:13px;letter-spacing:1px}
+.nav-right a{text-transform:uppercase}
+.nav-right a:hover{text-decoration:underline}
+.banner-strip{background:#1a1a1a;color:#fff;text-align:center;padding:10px;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.hero{position:relative;overflow:hidden}
+.hero-img{width:100%;height:600px;background:linear-gradient(135deg,#1a1a1a 0%,#3a3a3a 100%);display:flex;align-items:center;justify-content:center;color:#fff}
+.hero-content{position:absolute;bottom:60px;left:60px}
+.hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;color:#fff}
+.hero-title{font-size:52px;font-weight:300;line-height:1.1;color:#fff;margin-bottom:24px;letter-spacing:-1px}
+.hero-cta{display:inline-block;background:#fff;color:#1a1a1a;padding:14px 32px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500}
+.hero-cta:hover{background:#e8e8e8}
+.section{padding:60px 40px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}
+.section-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.section-link{font-size:12px;letter-spacing:1px;text-decoration:underline;text-transform:uppercase}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product-card a{display:block}
+.product-img{background:#f0f0f0;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:64px;margin-bottom:12px;overflow:hidden;transition:opacity 0.2s}
+.product-card:hover .product-img{opacity:0.85}
+.product-name{font-size:13px;color:#1a1a1a;margin-bottom:4px;letter-spacing:0.5px}
+.product-price{font-size:13px;color:#555}
+.badge{display:inline-block;background:#1a1a1a;color:#fff;font-size:10px;letter-spacing:2px;padding:3px 8px;margin-bottom:8px;text-transform:uppercase}
+.badge-sale{background:#c00}
+.two-col-hero{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.col-hero{height:400px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative}
+.col-hero-text{position:absolute;bottom:32px;left:32px}
+.col-hero-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.col-hero-btn{display:inline-block;padding:12px 24px;background:#1a1a1a;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.col-hero-btn:hover{background:#333}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:60px 40px;text-align:center;border-top:1px solid #e8e8e8}
+.info-item h3{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.info-item p{font-size:13px;color:#666;line-height:1.7}
+.cat-hero{background:#f0ede8;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.cat-hero-text h1{font-size:42px;font-weight:300;letter-spacing:-1px;margin-bottom:16px}
+.cat-hero-text p{font-size:14px;color:#666;line-height:1.7;margin-bottom:28px}
+.cat-hero-img{background:#ddd;height:400px;display:flex;align-items:center;justify-content:center;font-size:80px}
+.tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid #e8e8e8;margin-right:8px;margin-bottom:8px;cursor:pointer}
+.tag:hover,.tag.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.breadcrumb{padding:16px 40px;font-size:12px;color:#888}
+.breadcrumb a{color:#888}
+.breadcrumb a:hover{color:#1a1a1a}
+.breadcrumb span{margin:0 8px}
+.product-detail{display:grid;grid-template-columns:1fr 420px;min-height:calc(100vh - 64px)}
+.product-gallery{background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:120px;min-height:600px}
+.product-info{padding:60px 48px}
+.product-info h1{font-size:20px;font-weight:400;letter-spacing:1px;margin-bottom:8px}
+.product-price{font-size:16px;color:#555;margin-bottom:32px}
+.color-label,.size-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.size-label{display:flex;justify-content:space-between}
+.colors{display:flex;gap:8px;margin-bottom:28px}
+.color-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.color-swatch.selected{border-color:#1a1a1a}
+.sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
+.size-btn{border:1px solid #e8e8e8;padding:12px;text-align:center;font-size:13px;cursor:pointer;background:#fff}
+.size-btn:hover{border-color:#1a1a1a}
+.size-btn.selected{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
+.size-btn.sold-out{color:#ccc;cursor:not-allowed}
+.add-btn{display:block;width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;text-align:center;margin-bottom:12px}
+.add-btn:hover{background:#333}
+.wishlist-btn{width:100%;padding:18px;background:#fff;color:#1a1a1a;border:1px solid #1a1a1a;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer}
+.product-desc{margin-top:32px;font-size:13px;line-height:1.7;color:#555;border-top:1px solid #e8e8e8;padding-top:24px}
+.cart-layout{display:grid;grid-template-columns:1fr 380px;gap:60px;padding:60px 40px}
+.cart-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px}
+.cart-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #e8e8e8}
+.cart-item-img{width:100px;height:130px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0}
+.cart-item-name{font-size:13px;margin-bottom:4px}
+.cart-item-meta{font-size:12px;color:#888;margin-bottom:8px}
+.cart-item-price{font-size:13px}
+.cart-summary-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
+.cart-summary-row{display:flex;justify-content:space-between;font-size:13px;padding:12px 0;border-bottom:1px solid #e8e8e8}
+.cart-total{display:flex;justify-content:space-between;font-size:14px;font-weight:500;padding:20px 0}
+.checkout-btn{display:block;width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;text-align:center;margin-top:16px}
+.checkout-btn:hover{background:#333}
+.promo-row{display:flex;gap:0;margin-top:16px}
+.promo-row input{flex:1;border:1px solid #e8e8e8;padding:14px 16px;font-size:13px;border-right:none}
+.promo-row button{border:1px solid #e8e8e8;padding:14px 20px;background:#fff;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.form-page{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 64px);background:#fafafa}
+.form-card{background:#fff;padding:48px;width:100%;max-width:480px}
+.form-card h1{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.form-card p{font-size:13px;color:#888;margin-bottom:32px;line-height:1.6}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;color:#555}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid #e8e8e8;padding:14px 16px;font-size:13px;background:#fff;font-family:inherit}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:#1a1a1a}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit-btn{width:100%;padding:18px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-top:8px}
+.submit-btn:hover{background:#333}
+.form-link{text-align:center;margin-top:20px;font-size:13px;color:#888}
+.form-link a{color:#1a1a1a;text-decoration:underline}
+.checkout-layout{display:grid;grid-template-columns:1fr 400px;min-height:calc(100vh - 64px)}
+.checkout-form{padding:60px 40px}
+.checkout-summary{background:#fafafa;padding:60px 40px;border-left:1px solid #e8e8e8}
+.checkout-step{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:8px}
+.checkout-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}
+.checkout-item{display:flex;gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #e8e8e8}
+.checkout-item-img{width:64px;height:80px;background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.confirmation{text-align:center;padding:100px 40px;max-width:600px;margin:0 auto}
+.confirmation h1{font-size:13px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px}
+.continue-btn{display:inline-block;margin-top:40px;padding:16px 40px;background:#1a1a1a;color:#fff;font-size:12px;letter-spacing:3px;text-transform:uppercase}
+.continue-btn:hover{background:#333}
+.account-layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 64px)}
+.account-sidebar{border-right:1px solid #e8e8e8;padding:48px 32px}
+.account-sidebar h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
+.account-nav a{display:block;font-size:13px;padding:10px 0;color:#888;border-bottom:1px solid #f0f0f0}
+.account-nav a:hover,.account-nav a.active{color:#1a1a1a}
+.account-content{padding:48px}
+.account-content h1{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}
+.order-card{border:1px solid #e8e8e8;padding:24px;margin-bottom:16px}
+.order-header{display:flex;justify-content:space-between;margin-bottom:16px;font-size:13px}
+.footer{background:#1a1a1a;color:#aaa;padding:60px 40px;margin-top:80px}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.footer h4{color:#fff;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
+.footer a{display:block;font-size:12px;color:#aaa;margin-bottom:10px}
+.footer a:hover{color:#fff}
+.footer-bottom{border-top:1px solid #333;margin-top:40px;padding-top:24px;font-size:12px;display:flex;justify-content:space-between}
+</style>
 </head>
 <body>
+<div class="banner-strip">Free shipping on orders over $50 &middot; Free returns &middot; <a href="/xara-site/sale" style="color:#fff;text-decoration:underline">Sale now on</a></div>
+<nav class="nav">
+  <div class="nav-links">
+    <a href="/xara-site/woman">Woman</a>
+    <a href="/xara-site/man">Man</a>
+    <a href="/xara-site/new">New In</a>
+    <a href="/xara-site/sale">Sale</a>
+  </div>
+  <a href="/xara-site/" class="nav-logo">XARA</a>
+  <div class="nav-right">
+    <a href="/xara-site/stores">Stores</a>
+    <a href="/xara-site/account">Account</a>
+    <a href="/xara-site/cart">Cart (2)</a>
+  </div>
+</nav>
 
-<main>
-  <div class="hero">
-    <div class="hero-img" style="background:linear-gradient(135deg,#1a1a1a 0%,#444 100%);color:#fff;font-size:14px;letter-spacing:4px;text-transform:uppercase">
-      <div style="text-align:center">
-        <div style="font-size:80px;margin-bottom:16px">🧥</div>
-        <div>New Collection — Studio 26</div>
-      </div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-label">New collection</div>
-      <div class="hero-title">Studio 26<br>The Edit</div>
-      <a href="/new" class="hero-cta">Discover now</a>
+<div class="hero">
+  <div class="hero-img" style="font-size:14px;letter-spacing:4px;text-transform:uppercase;flex-direction:column;gap:16px">
+    <div style="font-size:80px">🧥</div>
+    <div>New Collection &mdash; Studio 26</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">New collection</div>
+    <div class="hero-title">Studio 26<br>The Edit</div>
+    <a href="/xara-site/new" class="hero-cta">Discover now</a>
+  </div>
+</div>
+
+<div class="two-col-hero">
+  <div class="col-hero" style="background:#e8e4de">
+    🧣
+    <div class="col-hero-text">
+      <div class="col-hero-label">Woman</div>
+      <a href="/xara-site/woman" class="col-hero-btn">Shop now</a>
     </div>
   </div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px">
-    <div style="background:#e8e4de;height:400px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative">
-      🧣
-      <div style="position:absolute;bottom:32px;left:32px">
-        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">Woman</div>
-        <a href="/woman" style="display:inline-block;padding:12px 24px;background:#1a1a1a;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase">Shop now</a>
-      </div>
-    </div>
-    <div style="background:#d4d0ca;height:400px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative">
-      🧥
-      <div style="position:absolute;bottom:32px;left:32px">
-        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">Man</div>
-        <a href="/man" style="display:inline-block;padding:12px 24px;background:#1a1a1a;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase">Shop now</a>
-      </div>
+  <div class="col-hero" style="background:#d4d0ca">
+    🧥
+    <div class="col-hero-text">
+      <div class="col-hero-label">Man</div>
+      <a href="/xara-site/man" class="col-hero-btn">Shop now</a>
     </div>
   </div>
+</div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">New in</div>
-      <a href="/new" class="section-link">View all</a>
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">New in</div>
+    <a href="/xara-site/new" class="section-link">View all</a>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <a href="/xara-site/products/black-blazer">
+        <div class="product-img">🧥</div>
+        <div class="product-name">Structured blazer</div>
+        <div class="product-price">$129.00</div>
+      </a>
     </div>
-    <div class="product-grid">
-      <div class="product-card">
-        <a href="/products/black-blazer">
-          <div class="product-img">🧥</div>
-          <div class="product-name">Structured blazer</div>
-          <div class="product-price">29.00</div>
-        </a>
-      </div>
-      <div class="product-card">
-        <a href="/products/wide-leg-trousers">
-          <div class="product-img">👖</div>
-          <div class="product-name">Wide-leg trousers</div>
-          <div class="product-price">9.00</div>
-        </a>
-      </div>
-      <div class="product-card">
-        <a href="/products/white-shirt">
-          <div class="product-img">👕</div>
-          <div class="product-name">Cotton poplin shirt</div>
-          <div class="product-price">9.00</div>
-        </a>
-      </div>
-      <div class="product-card">
-        <a href="/sale">
-          <div class="product-img" style="background:#f5e8e8">👗</div>
-          <span class="product-badge sale">Sale</span>
-          <div class="product-name">Midi slip dress</div>
-          <div class="product-price"><span style="color:#c00">9.00</span> <span style="text-decoration:line-through;color:#aaa">9.00</span></div>
-        </a>
-      </div>
+    <div class="product-card">
+      <a href="/xara-site/products/wide-leg-trousers">
+        <div class="product-img">👖</div>
+        <div class="product-name">Wide-leg trousers</div>
+        <div class="product-price">$79.00</div>
+      </a>
+    </div>
+    <div class="product-card">
+      <a href="/xara-site/products/white-shirt">
+        <div class="product-img">👕</div>
+        <div class="product-name">Cotton poplin shirt</div>
+        <div class="product-price">$49.00</div>
+      </a>
+    </div>
+    <div class="product-card">
+      <a href="/xara-site/sale">
+        <div class="product-img" style="background:#f5e8e8">👗</div>
+        <div class="badge badge-sale">Sale</div>
+        <div class="product-name">Midi slip dress</div>
+        <div class="product-price"><span style="color:#c00">$39.00</span> <span style="text-decoration:line-through;color:#aaa">$69.00</span></div>
+      </a>
     </div>
   </div>
+</div>
 
-  <div style="background:#f5f0ea;padding:80px 40px;text-align:center;margin:0 40px">
-    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;color:#888">Our commitment</div>
-    <div style="font-size:36px;font-weight:300;letter-spacing:-1px;margin-bottom:20px">Worn today.<br>Made for tomorrow.</div>
-    <div style="font-size:13px;color:#666;max-width:500px;margin:0 auto 32px;line-height:1.7">We believe style should not cost the planet. Discover how Xara is rethinking the way fashion is made.</div>
-    <a href="/sustainability" style="display:inline-block;padding:14px 32px;border:1px solid #1a1a1a;font-size:12px;letter-spacing:2px;text-transform:uppercase">Learn more</a>
+<div style="background:#f5f0ea;padding:80px 40px;text-align:center;margin:0 40px">
+  <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;color:#888">Our commitment</div>
+  <div style="font-size:36px;font-weight:300;letter-spacing:-1px;margin-bottom:20px">Worn today.<br>Made for tomorrow.</div>
+  <div style="font-size:13px;color:#666;max-width:500px;margin:0 auto 32px;line-height:1.7">We believe style should not cost the planet. Discover how Xara is rethinking the way fashion is made.</div>
+  <a href="/xara-site/sustainability" style="display:inline-block;padding:14px 32px;border:1px solid #1a1a1a;font-size:12px;letter-spacing:2px;text-transform:uppercase">Learn more</a>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="section-title">Sale &mdash; up to 50% off</div>
+    <a href="/xara-site/sale" class="section-link">View all sale</a>
   </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">Sale — up to 50% off</div>
-      <a href="/sale" class="section-link">View all sale</a>
-    </div>
-    <div class="product-grid">
-      <div class="product-card">
-        <a href="/sale">
-          <div class="product-img" style="background:#f0ede8">👗</div>
-          <span class="product-badge sale">Sale</span>
-          <div class="product-name">Printed maxi dress</div>
-          <div class="product-price"><span style="color:#c00">5.00</span> <span style="text-decoration:line-through;color:#aaa">9.00</span></div>
-        </a>
-      </div>
-      <div class="product-card">
-        <a href="/sale">
-          <div class="product-img" style="background:#ede8f0">🧤</div>
-          <span class="product-badge sale">Sale</span>
-          <div class="product-name">Leather gloves</div>
-          <div class="product-price"><span style="color:#c00">9.00</span> <span style="text-decoration:line-through;color:#aaa">9.00</span></div>
-        </a>
-      </div>
-      <div class="product-card">
-        <a href="/sale">
-          <div class="product-img" style="background:#e8f0ed">🧣</div>
-          <span class="product-badge sale">Sale</span>
-          <div class="product-name">Wool scarf</div>
-          <div class="product-price"><span style="color:#c00">5.00</span> <span style="text-decoration:line-through;color:#aaa">9.00</span></div>
-        </a>
-      </div>
-      <div class="product-card">
-        <a href="/sale">
-          <div class="product-img" style="background:#f0e8ea">👜</div>
-          <span class="product-badge sale">Sale</span>
-          <div class="product-name">Mini tote bag</div>
-          <div class="product-price"><span style="color:#c00">5.00</span> <span style="text-decoration:line-through;color:#aaa">9.00</span></div>
-        </a>
-      </div>
-    </div>
+  <div class="product-grid">
+    <div class="product-card"><a href="/xara-site/sale"><div class="product-img" style="background:#f0ede8">👗</div><div class="badge badge-sale">Sale</div><div class="product-name">Printed maxi dress</div><div class="product-price"><span style="color:#c00">$45.00</span> <span style="text-decoration:line-through;color:#aaa">$89.00</span></div></a></div>
+    <div class="product-card"><a href="/xara-site/sale"><div class="product-img" style="background:#ede8f0">🧤</div><div class="badge badge-sale">Sale</div><div class="product-name">Leather gloves</div><div class="product-price"><span style="color:#c00">$19.00</span> <span style="text-decoration:line-through;color:#aaa">$39.00</span></div></a></div>
+    <div class="product-card"><a href="/xara-site/sale"><div class="product-img" style="background:#e8f0ed">🧣</div><div class="badge badge-sale">Sale</div><div class="product-name">Wool scarf</div><div class="product-price"><span style="color:#c00">$25.00</span> <span style="text-decoration:line-through;color:#aaa">$49.00</span></div></a></div>
+    <div class="product-card"><a href="/xara-site/sale"><div class="product-img" style="background:#f0e8ea">👜</div><div class="badge badge-sale">Sale</div><div class="product-name">Mini tote bag</div><div class="product-price"><span style="color:#c00">$35.00</span> <span style="text-decoration:line-through;color:#aaa">$69.00</span></div></a></div>
   </div>
+</div>
 
-  <div class="info-grid">
-    <div class="info-item">
-      <h3>Free shipping</h3>
-      <p>On all orders over 0. Standard delivery in 3–5 business days.</p>
-    </div>
-    <div class="info-item">
-      <h3>Free returns</h3>
-      <p>Easy 30-day returns. Drop off at any Xara store or schedule a pickup.</p>
-    </div>
-    <div class="info-item">
-      <h3>Secure payment</h3>
-      <p>Your payment information is always encrypted and never stored.</p>
-    </div>
+<div class="info-grid">
+  <div class="info-item"><h3>Free shipping</h3><p>On all orders over $50. Standard delivery in 3&ndash;5 business days.</p></div>
+  <div class="info-item"><h3>Free returns</h3><p>Easy 30-day returns. Drop off at any Xara store or schedule a pickup.</p></div>
+  <div class="info-item"><h3>Secure payment</h3><p>Your payment information is always encrypted and never stored.</p></div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><h4>Help</h4><a href="#">FAQ</a><a href="#">Shipping &amp; Returns</a><a href="#">Size Guide</a><a href="/xara-site/stores">Store Locator</a><a href="/xara-site/gift-cards">Gift Cards</a></div>
+    <div><h4>Company</h4><a href="/xara-site/sustainability">Sustainability</a><a href="#">About Xara</a><a href="#">Careers</a></div>
+    <div><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a></div>
+    <div><h4>Follow Us</h4><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a><a href="#">YouTube</a></div>
   </div>
-</main>
-
-
-</body></html>
+  <div class="footer-bottom"><span>&copy; 2026 XARA</span><span>USD $ &middot; English</span></div>
+</footer>
+<script>
+(function(){
+var KEY="lc_snip_37b0245fbce040ccb5a139dcf9067d3f";
+var EP="https://nyrdvltmzswxphvgxdeh.supabase.co/functions/v1/ingest";
+var q=[];
+var sid=(function(){try{var i=sessionStorage.getItem("lc_sid");if(!i){i=Math.random().toString(36).slice(2)+Date.now();sessionStorage.setItem("lc_sid",i);}return i;}catch(e){return Math.random().toString(36).slice(2)+Date.now();}})();
+function base(){return{url:location.href,path:location.pathname,title:document.title,referrer:document.referrer,session_id:sid,screen_width:screen.width,screen_height:screen.height,timestamp:new Date().toISOString()};}
+function flush(){if(!q.length)return;var b=q.splice(0);fetch(EP,{method:"POST",headers:{"Content-Type":"application/json","x-snippet-key":KEY},body:JSON.stringify({events:b}),keepalive:true}).catch(function(){});}
+function enq(n,p){q.push({event:n,properties:Object.assign(base(),p||{}),source:"snippet",snippet_version:"0.1.0"});if(q.length>=5)flush();}
+enq("snippet_loaded",{site_root:location.protocol+"//"+location.host});
+enq("page_view",{});
+window.addEventListener("pagehide",flush);
+window.addEventListener("beforeunload",flush);
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")flush();});
+setInterval(flush,3000);
+})();
+</script>
+</body>
+</html>
